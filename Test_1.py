@@ -11,8 +11,9 @@ browser.all('#todo-list>li').should(have.exact_texts('a', 'b', 'c'))
 browser.element('#todo-list>li:nth-of-type(2) .toggle').click()
 browser.element(by.text('Completed')).click()
 browser.all('#todo-list>li.completed').should(have.texts('b'))
-#
+
+# browser.all('#todo-list>li:not(.completed)').should(have.exact_texts('a', 'c'))
 # browser.element(by.text('Active')).click()
-# browser.all('#filters>li.active').should(have.exact_texts('a', 'c'))
-# time.sleep(60)
+#
 # browser.element('#ember9').click() - не вірно
+# browser.quit()
