@@ -5,6 +5,9 @@ from selene.support.shared import browser
 browser.open('https://www.ecosia.org/')
 browser.element(by.name('q')).type('it step academy').press_enter()
 browser.element(by.css('[href="https://itstep.org/uk"][tabindex="-1"]')).click()
+# browser.all(by.css(' .result')).first.click()
+time.sleep(10)
+
 browser.all('.marker-city.cremenchug-small  .marker-point').first.click()
 
 page_text = browser.driver.page_source.lower()
