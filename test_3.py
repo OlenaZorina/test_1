@@ -9,7 +9,7 @@ def test_friends():
     config.window_width = 1440
     config.window_height = 1000
 
-    browser.open('http://opencart.qatestlab.net')
+    browser.open('http://opencart.qatestlab.net/index.php?route=common/home')
     browser.element(by.xpath('//*[text()="Аккаунт"][1]')).click()
     browser.element(by.xpath('//*[text()="Регистрация"]')).click()
     browser.element('#input-firstname').type('Olena').press_enter()
@@ -30,6 +30,7 @@ def should(param):
 
 def test_authorization():
     browser.open('http://opencart.qatestlab.net')
+    browser.driver.maximize_window()
     browser.element(by.xpath('//*[text()="Войти"]')).click()
     browser.element('#input-email').type('zorinae83@gmail.com')
     browser.element('#input-password').type('12345')
@@ -43,6 +44,7 @@ def test_authorization():
 
 def test_auto():
     browser.open('http://opencart.qatestlab.net')
+    browser.driver.maximize_window()
     browser.element('.sf-with-ul').click()
     browser.element(by.text('HDP Dog Boots Blue Set of 4 Medium')).click()
     browser.all('.sbHolder .sbToggle')[0].click()
@@ -54,8 +56,6 @@ def test_auto():
     browser.all('.cart-total2').should(have.texts('2'))
     time.sleep(10)
 
-def test_auto1():
-    browser.open('http://opencart.qatestlab.net')
-    browser.element('.cart-total2').click()
+
 
 
