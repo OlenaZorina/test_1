@@ -30,15 +30,22 @@ def test_finding():
     browser.element('.rowProducts.row8>div:nth-of-type(3)').click()
     browser.element('.pi-size-list>div:nth-of-type(4)').click()
     browser.element('.pi-cart').click()
+    # редагування кількості
     browser.element('.fa.fa-plus-square').click()
-    browser.element('[title="Close"]').click()
-    browser.element('.counter').click()
-    browser.all('.counter').should(have.texts('2'))
+    # перевірка наявності товару в кошику в кількості 2
+    browser.all('.fancybox-inner').should(have.texts('2'))
     time.sleep(5)
-    #browser.element('.col-xs-6 .remove').click()
-    #time.sleep(15)
-    #browser.element('.cart-products-remove>a').click()
-    #browser.element('.empty').click()
-    #browser.all('.col-md-12 .account').should(have.texts('Ваш кошик порожній!'))
+    # видалення товару з кошика
+    browser.element('.cart-products-remove>a').click()
+    browser.element('.empty').click()
+    # перевірка пустого кошика
+    browser.all('.col-md-12 .account').should(have.texts('Ваш кошик порожній!'))
 
 
+
+
+    #browser.element('[title="Close"]').click()
+    #browser.all('.counter').should(have.texts('2'))
+
+    #browser.element('.counter').click()
+    #browser.element('a.remove:nth-of-type(1)').click()
