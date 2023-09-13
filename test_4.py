@@ -42,10 +42,24 @@ def test_finding():
     browser.all('.col-md-12 .account').should(have.texts('Ваш кошик порожній!'))
 
 
+# варіант 2
+def test_finding1():
+    browser.open('https://respect-shoes.com.ua')
+    browser.driver.maximize_window()
+    browser.element('#menu>ul>li>a').click()
+    browser.element('.rowProducts.row8>div:nth-of-type(3)').click()
+    browser.element('.pi-size-list>div:nth-of-type(4)').click()
+    browser.element('.pi-cart').click()
+    # редагування кількості
+    browser.element('.fa.fa-plus-square').click()
+    # перевірка наявності товару в кошику в кількості 2
+    browser.all('.fancybox-inner').should(have.texts('2'))
+    browser.element('[href="https://respect-shoes.com.ua/cart"]').click()
+    time.sleep(5)
+    # видалення товару з кошика
+    browser.element('[style="display:block;"]').click()
+    # перевірка пустого кошика
+    browser.all('.col-md-12 .account').should(have.texts('Ваш кошик порожній!'))
 
 
-    #browser.element('[title="Close"]').click()
-    #browser.all('.counter').should(have.texts('2'))
 
-    #browser.element('.counter').click()
-    #browser.element('a.remove:nth-of-type(1)').click()
